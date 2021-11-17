@@ -5,11 +5,13 @@ import json
 
 class File():
     @staticmethod
-    def save_state(tops, links):
+    def save_state(tops, links, tops_params, links_params):
         path=File.get_saving_path()
         if path!="":
-            file=open(path+".graph","w")
-            file.write(json.dumps({"tops":tops, "links":links}))
+            if ".graph" not in path:
+                path+=".graph"
+            file=open(path,"w")
+            file.write(json.dumps({"tops":tops, "links":links, "tops_parameters":tops_params, "links_parameters":links_params}))
             file.close()
 
 
@@ -20,8 +22,8 @@ class File():
             file=open(path,"r")
             data=json.loads(file.read())
             file.close()
-            return [data["tops"], data["links"]]
-        return [[],[]]
+            return [data["tops"], data["links"], data["tops_parameters"], data["links_parameters"]]
+        return [[],[],[],[]]
 
 
     @staticmethod

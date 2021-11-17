@@ -28,7 +28,7 @@ class View_top():
                                     + (self.pos[1] - click[1]) * (self.pos[1] - click[1])))
         if dist <= self.radius+self.border_radius:
             return self.id
-        elif dist <= (self.radius+self.border_radius) * 5:
+        elif dist <= 80:
             return "near"
         return None
 
@@ -40,7 +40,7 @@ class View_top():
             pygame.draw.circle(screen, self.border_color, self.pos, self.radius+self.border_radius)
         pygame.draw.circle(screen, self.color, self.pos, self.radius)
         myfont = pygame.font.SysFont('Arial', self.radius)
-        textsurface = myfont.render(str(self.num), False, (0, 0, 0))
+        textsurface = myfont.render(str(self.num), False, self.border_color)
         text_width = textsurface.get_width()
         text_height = textsurface.get_height()
         screen.blit(textsurface,(self.pos[0] - text_width/2,self.pos[1]-text_height/2))

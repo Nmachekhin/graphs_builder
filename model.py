@@ -14,6 +14,10 @@ class Model():
         self.tops={}
         self.links={}
 
+
+    def is_empty(self):
+        return self.tops=={} and self.links=={}
+
     def set_loaded_tops(self, data):
         for i in data:
             top=Top()

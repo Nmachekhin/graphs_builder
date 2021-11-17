@@ -100,7 +100,7 @@ class View_link():
             pygame.draw.line(screen, self.color, self.get_arrows_wings(start.pos, end_point)[1], end_point)
         if self.has_weight:
             myfont = pygame.font.SysFont('Arial', 14)
-            textsurface = myfont.render(str(self.weight), False, (0, 0, 0))
+            textsurface = myfont.render(str(self.weight), False, self.color)
             middle=self.get_middle(start.pos, end.pos)
             pygame.draw.circle(screen, self.color,middle, max(textsurface.get_width()/2, textsurface.get_height()/2)+3)
             pygame.draw.circle(screen, (255, 255, 255), middle,max(textsurface.get_width()/2, textsurface.get_height()/2)+2)

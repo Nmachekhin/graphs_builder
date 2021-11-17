@@ -7,21 +7,24 @@ class Controller():
     def __init__(self):
         self.model=Model()
 
-    def save_state(self):
-        File.save_state(self.get_all_tops(), self.get_all_links())
+    def is_empy(self):
+        return self.model.is_empty()
+
+    def save_state(self, tops_params, links_params):
+        File.save_state(self.get_all_tops(), self.get_all_links(), tops_params, links_params)
 
     def load_state(self):
         self.model.delete_state()
         try:
-            new_tops, new_links = File.load_state()
+            new_tops, new_links, tops_params, links_params = File.load_state()
             self.model.set_loaded_tops(new_tops)
             self.model.set_loaded_links(new_links)
-            return [self.get_all_tops(),self.get_all_links()]
+            return [self.get_all_tops(),self.get_all_links(), tops_params, links_params]
         except Exception as e:
             print("Error: "+str(e))
             ctypes.windll.user32.MessageBoxW(0, "Помилка! Перевірте цілісність файлу!", 0)
             self.model.delete_state()
-            return [[],[]]
+            return [[],[], [], []]
 
 
     def left_click_on_empty(self, click_pos:list):
