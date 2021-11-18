@@ -67,7 +67,10 @@ class View_link():
             base_pos=base_positions[0]
         else:
             base_pos=base_positions[1]
-        alt_k_param=-1/k_param
+        if k_param!=0:
+            alt_k_param=-1/k_param
+        else:
+            alt_k_param=0
         alt_b_param= (k_param-alt_k_param) * base_pos[0] + b_param
         return self.get_positions_by_radius(base_pos, alt_k_param, alt_b_param, self.wings_len)
 
