@@ -2,8 +2,8 @@ from view import *
 from controller import *
 
 
-control=Controller()
-view=View(control)
+controller=Controller()
+view=View(controller)
 
 exit=False
 
