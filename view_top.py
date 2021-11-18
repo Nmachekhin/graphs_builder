@@ -28,7 +28,7 @@ class View_top():
                                     + (self.pos[1] - click[1]) * (self.pos[1] - click[1])))
         if dist <= self.radius+self.border_radius:
             return self.id
-        elif dist <= 80:
+        elif dist <=(self.radius+self.border_radius)*2 +50:
             return "near"
         return None
 
